@@ -245,13 +245,15 @@ class excelTools:
     def addTotalNumFormular(self ,sectionNum):           
         if 'num' in self.outKeys:
             for i in range(len(self.headerIndex)):
-                    if self.excelList[self.headerIndex[i]]['num'] =='' :
-                        self.excelList[self.headerIndex[i]]['num'] = sectionNum[i];
+                headerIndex = self.headerIndex[i];
+                if self.excelList[headerIndex]['num'] =='' :
+                    self.excelList[self.headerIndex[i]]['num'] = sectionNum[i];
+                    # self.excelList[headerIndex] = self.excelList[headerIndex + 1];
 
-                    begin = self.headerIndex[i] + 1; 
-                    end = self.subtotalIndex[i];
-                    for j in range(begin,end):
-                        self.totalNumFormular(i,j,'num');
+                begin = self.headerIndex[i] + 1; 
+                end = self.subtotalIndex[i];
+                for j in range(begin,end):
+                    self.totalNumFormular(i,j,'num');
         else:
             for j in range(len(self.excelList)):
                 self.excelList[j]['totalNum'] = self.excelList[j]['num'];
@@ -443,7 +445,8 @@ class excelTools:
         # 设置列宽
         self.xlsWriterTools.setColumn(self.sumaryListKeys,'Summary');
         # 设置行宽
-        self.xlsWriterTools.setRow('Summary' , self.sumaryList);
+        if MODEL == 'H3C':
+            self.xlsWriterTools.setRow('Summary' , self.sumaryList);
         # 关闭
         # self.xlsWriterTools.closeWriter();
 

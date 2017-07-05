@@ -64,14 +64,14 @@ elif fileTag == suffix and MODEL == 'H3C':
     outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
 elif fileTag.isdigit() and MODEL == 'HPE':
-    inputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
+    inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','折扣','目录价','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
     
 else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','折扣','目录价','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
+    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
 
 
 newSuffix = suffix + '_'+ str(numSuffix + 1);
