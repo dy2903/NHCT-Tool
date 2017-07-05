@@ -247,8 +247,14 @@ class excelTools:
             for i in range(len(self.headerIndex)):
                 headerIndex = self.headerIndex[i];
                 if self.excelList[headerIndex]['num'] =='' :
-                    self.excelList[self.headerIndex[i]]['num'] = sectionNum[i];
-                    # self.excelList[headerIndex] = self.excelList[headerIndex + 1];
+                    # self.excelList[self.headerIndex[i]]['num'] = sectionNum[i];
+                    Qty = self.excelList[headerIndex + 1]['num']
+                    self.excelList[headerIndex]['num'] = Qty;
+                    begin = self.headerIndex[i] + 1; 
+                    end = self.subtotalIndex[i];
+                    for j in range(begin,end):
+                        self.excelList[j]['num'] = self.excelList[j]['num'] / Qty;
+                    
 
                 begin = self.headerIndex[i] + 1; 
                 end = self.subtotalIndex[i];

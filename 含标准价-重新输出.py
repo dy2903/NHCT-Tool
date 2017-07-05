@@ -66,7 +66,7 @@ elif fileTag == suffix and MODEL == 'H3C':
 elif fileTag.isdigit() and MODEL == 'HPE':
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','折扣','目录价','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
+    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
     
 else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
@@ -100,7 +100,12 @@ excelTools.replaceTopRow();
 # 删除ID
 excelTools.removeID();
 # 打印明细sheet
-excelTools.printList(excelTools.excelList , excelTools.sheetName);
+if MODEL == 'HPE':
+    hideColumn = ['productLine','waston','typeID']
+else:
+    hideColumn = ['productLine','waston'];
+    
+excelTools.printList(excelTools.excelList , excelTools.sheetName , hideColumn);
 # 打印sumary
 excelTools.sumaryList = excelTools.getSumaryList();
 
