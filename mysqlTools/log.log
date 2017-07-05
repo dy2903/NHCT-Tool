@@ -1,0 +1,8 @@
+2017-06-25 19:07:48,613 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:07:48,613 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:07:52,643 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:07:52,643 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:09:43,477 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:09:43,477 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'list' cannot be converted to a MySQL type
+2017-06-25 19:16:59,725 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'tuple' cannot be converted to a MySQL type
+2017-06-25 19:16:59,725 WARNING MySQLDBTools.fetch_all Line:74 query database exception, Failed processing format-parameters; Python 'tuple' cannot be converted to a MySQL type

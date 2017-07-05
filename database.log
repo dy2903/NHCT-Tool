@@ -1,0 +1,20 @@
+22017-06-26 14:28:47,536 ERROR excelTools.openExcel Line:86 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-01 11:46:47,968 ERROR excelTools.openExcel Line:94 Can't Open the excel, [Errno 2] No such file or directory: '.\\中国太平保险集团公司武汉数据中心网络设备采购项目_20170627.xls.xls'
+2017-07-01 11:48:11,746 ERROR excelTools.openExcel Line:94 Can't Open the excel, [Errno 2] No such file or directory: '.\\中国太平保险集团公司武汉数据中心网络设备采购项目_20170627.xls.xls'
+2017-07-02 19:19:35,249 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-02 19:41:59,366 ERROR excelTools.openExcel Line:80 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价.xls'
+2017-07-03 18:13:58,610 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 18:14:07,384 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 19:16:00,467 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 19:16:14,911 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 19:17:09,977 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 19:17:41,630 ERROR excelTools.openExcel Line:80 Can't Open the excel, formatting_info=True not yet implemented
+2017-07-03 19:23:39,909 ERROR excelTools.openExcel Line:80 Can't Open the excel, [Errno 13] Permission denied: '.\\~$【深证通】H3C配置清单-2017-7-3_含标准价.xls'
+2017-07-03 21:58:38,939 ERROR excelTools.openExcel Line:82 Can't Open the excel, 'Book' object has no attribute 'row_values'
+2017-07-03 22:02:47,876 ERROR excelTools.openExcel Line:83 Can't Open the excel, [Errno 2] No such file or directory: '.\\【深证通】H3C配置清单-2017-7-3_含标准价..xls'
+2017-07-04 07:28:46,328 ERROR excelTools.openExcel Line:83 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价.xls'
+2017-07-04 07:33:49,322 ERROR excelTools.openExcel Line:83 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价.xls'
+2017-07-05 08:02:40,239 ERROR excelTools.openExcel Line:84 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_3.xls'
+2017-07-05 08:04:31,575 ERROR excelTools.openExcel Line:84 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_4.xls'
+2017-07-05 09:49:27,371 ERROR excelTools.openExcel Line:84 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_2.xls'
+2017-07-05 14:30:54,926 ERROR excelTools.openExcel Line:85 Can't Open the excel, [Errno 13] Permission denied: '.\\~$前海人寿机构机房设备框架采购_含标准价_1.xls'
