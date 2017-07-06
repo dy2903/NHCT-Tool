@@ -16,6 +16,7 @@ LOGPATH = mod_config.getConfig('path', 'logpath') + 'database.log'
 EXCELPATH = mod_config.getConfig('path', 'excelPath');
 EXCELFILENAME = mod_config.getConfig('path', 'excelName');
 MODEL= mod_config.getConfig('mode', 'model');
+dbName = mod_config.getConfig('mode','db');
 # 初始化日志类
 logger = mod_logger.logger(LOGPATH)
 class excelTools:
@@ -64,6 +65,8 @@ class excelTools:
         self.sumaryValues = ['序号','描述','配置主机','数量','单价','总价','占比'];
         # 数据库的列标题
         self.dbKeys = ['ID', 'BOM', 'typeID', 'description', 'listprice'];
+        if dbName == 'merchants':
+            self.dbKeys= ['ID', 'BOM', 'typeID', 'description', 'price'];
         
         
     # 获得差集
@@ -230,6 +233,7 @@ class excelTools:
         if (tagOut in self.inputKeys) == 0 or tagIn1 in self.inputKeys == 0 or tagIn2 in self.inputKeys == 0 or (i < 0):
             print('tag is not in inputKeys');
             return;
+
         self.excelList[i][tagOut] = '=' + self.columnIndexDict[tagIn1] + str(i + 1) + '*' + self.columnIndexDict[tagIn2] + str(i + 1);
     
     # 最终价格
@@ -303,7 +307,8 @@ class excelTools:
     def addFormula (self):
         sectionNum = [1] * len(self.headerIndex);    
         self.addTotalNumFormular(sectionNum);
-        self.addSubtotalFormula('totalPrice');
+        if 'totalPrice' in self.outKeys:
+            self.addSubtotalFormula('totalPrice');
         if 'totalListPrice' in self.outKeys:
             self.addSubtotalFormula('totalListPrice');
 
@@ -313,7 +318,7 @@ class excelTools:
     # 获得每一列所有的的列号
     def getColumnIndexDict(self , columnIndex):        
         columnIndexDict = {};
-        columnTags = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'];
+        columnTags = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         try:
             for i in range(len(columnIndex)):
                 columnIndexDict[columnIndex[i]] = columnTags[i];
@@ -412,7 +417,10 @@ class excelTools:
         for i in range(len(self.headerIndex)):
             dict = {};
             header = self.headerIndex[i]
-            dict ['Qty'] = '='+self.sheetName+'!'+self.columnIndexDict['num'] + str(header + 1) ;
+            if dbName == 'merchants':
+                dict['Qty'] = '=' + self.sheetName + '!' + self.columnIndexDict['totalNum'] + str(header + 2);
+            else:
+                dict ['Qty'] = '='+self.sheetName+'!'+self.columnIndexDict['num'] + str(header + 1) ;
             # URL连接
             dict['description'] = 'internal:'+self.sheetName+'!'+self.columnIndexDict['BOM'] + str(header + 1) ;
             # 描述的值
@@ -466,14 +474,23 @@ class excelTools:
             dict = {};
             # 依次取出每一行
             row = self.excelList[i];
-            if row['BOM'] == ''  and row['typeID'] != '':
-                tag = 'typeID';
-            elif row['BOM'] != '':
-                tag = 'BOM';
-            else :
-                print('BOM 和产品型号都为空');
-                
-            sql = "SELECT *  from listpricetable where " + tag + "=%s";
+
+            if dbName == 'merchants':    
+                dbTable = 'merchantsbank';
+            elif dbName == 'normal':
+                dbTable = 'listpricetable';
+                if row['BOM'] == ''  and row['typeID'] != '':
+                    tag = 'typeID';
+                elif row['BOM'] != '':
+                    tag = 'BOM';
+                else :
+                    print('BOM 和产品型号都为空');
+            else:
+                dbTable == 'pingan'
+                    
+            # dbTable = 'listpricetable'
+            # sql = "SELECT *  from listpricetable where " + tag + "=%s";
+            sql = "SELECT *  from "+ dbTable+" where " + tag + "=%s";
             values = self.db.fetch_all(sql , row[tag]);
             # print (values);
             # 如果查出来的结果为空，则保留原样

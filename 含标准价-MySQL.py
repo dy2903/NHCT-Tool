@@ -16,7 +16,7 @@ def getFileName(suffix):
         print("当前目录下没有xls格式的文件");
         return;
     elif len(fileNameList) > 1:
-        numSuffix = -1;
+        numSuffix = -1; 
         fileSelect = "";
         fileTag = "";
         # 依次取出每个Excel文档。
@@ -48,9 +48,10 @@ def getFileName(suffix):
 
     return fileSelect , numSuffix ,fileTag ;
 
-
+    
 MODEL= mod_config.getConfig('mode', 'model');
-
+dbName = mod_config.getConfig('mode','db');
+    
 suffix = '含标准价'
 [excelName , numSuffix , fileTag] = getFileName(suffix);
 
@@ -66,13 +67,18 @@ elif fileTag == suffix and MODEL == 'H3C':
 elif fileTag.isdigit() and MODEL == 'HPE':
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
-
+    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
+    
 else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
-
+    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
+    
+if dbName == 'merchants':
+    outputKeys = ['ID','H3C','BOM','Category','switch','typeID','description','totalNum','unit','price','totalPrice','taxCategory','taxRate','addOn','period','repairFree','maintenancePeriod','serialNum', 'productLine','waston'];
+    # outputKeys = ['ID','H3C','BOM','Category','switch','typeID','description','totalNum','unit','listprice','totalListPrice','taxCategory','taxRate','addOn','period','repairFree','maintenancePeriod','serialNum', 'productLine','waston'];
+    outputHeaderLine = ['序号','品牌','招银采购管理系统产品编码','产品分类','产品及服务名称','型号','详细描述（规格/技术参数）','数量','单位','单价','小计','纳税类别','税率','备注','到货周期（单位：工作日）','新购产品免费维护期（单位：月）','维护周期','维护产品序列号', '产线','WATSON_LINE_ITEM_ID']  
+    
 
 newSuffix = suffix + '_'+ str(numSuffix + 1);
 
@@ -83,16 +89,19 @@ excelTools.transToStandard();
 excelTools.addTagColumn();
 # excelTools.removeOtherLines();
 excelTools.getSubTotalIndex();
+
 # 替换光模块
 # excelTools.replaceSFP();
 
 # 从数据库里面获取信息
-# listDB = excelTools.getValueByDB();
-# excelTools.replaceByList (listDB,excelTools.dbKeys);
+listDB = excelTools.getValueByDB('typeID');
+excelTools.replaceByList (listDB,excelTools.dbKeys);
 # 增加公式
 excelTools.addFormula();
 # 所有的OFF都和总计行的OFF相等
-excelTools.replaceOff();
+if 'off' in outputKeys:
+    excelTools.replaceOff();
+
 # 标题用outputValues替换
 excelTools.replaceTopRow();
 # 删除BOM编码
@@ -105,18 +114,23 @@ if MODEL == 'HPE':
 else:
     hideColumn = ['productLine','waston'];
 
+if dbName == 'merchants' :
+   excelTools.replaceTotalNum();
+   
 excelTools.printList(excelTools.excelList , excelTools.sheetName , hideColumn);
 # 打印sumary
 excelTools.sumaryList = excelTools.getSumaryList();
 
-excelTools.replaceTotalNum();
+if dbName != 'merchants':
+    excelTools.replaceTotalNum();
 # 打印汇总页
 if MODEL == 'H3C':
     [bomDict , indexList]= excelTools.getCheckList('typeID');
 else:
     [bomDict , indexList]= excelTools.getCheckList();
 
-
-excelTools.printCheckList(bomDict , indexList);
+if dbName != 'merchants':
+    excelTools.printCheckList(bomDict , indexList);
+    
 excelTools.printSumaryList();
 excelTools.xlsWriterTools.closeWriter();

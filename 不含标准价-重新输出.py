@@ -56,23 +56,29 @@ suffix = '含标准价'
 
 if fileTag.isdigit() and  MODEL == 'H3C' :
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston','addOn'];
-    outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    # outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
+    # outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
     suffix = '含标准价'
 elif fileTag == suffix and MODEL == 'H3C':
-    inputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    inputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    # outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
+    # outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
 elif fileTag.isdigit() and MODEL == 'HPE':
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
-
+    # outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
+    # outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
 else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
-
+    # outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
+    # outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
 
 newSuffix = suffix + '_'+ str(numSuffix + 1);
 
@@ -92,7 +98,8 @@ excelTools.getSubTotalIndex();
 # 增加公式
 excelTools.addFormula();
 # 所有的OFF都和总计行的OFF相等
-excelTools.replaceOff();
+if 'off' in outputKeys:
+    excelTools.replaceOff();
 # 标题用outputValues替换
 excelTools.replaceTopRow();
 # 删除BOM编码
@@ -111,12 +118,12 @@ excelTools.sumaryList = excelTools.getSumaryList();
 
 excelTools.replaceTotalNum();
 # 打印汇总页
-if MODEL == 'H3C':
-    [bomDict , indexList]= excelTools.getCheckList('typeID');
-else:
-    [bomDict , indexList]= excelTools.getCheckList();
+# if MODEL == 'H3C':
+#     [bomDict , indexList]= excelTools.getCheckList('typeID');
+# else:
+#     [bomDict , indexList]= excelTools.getCheckList();
 
 
-excelTools.printCheckList(bomDict , indexList);
-excelTools.printSumaryList();
+# excelTools.printCheckList(bomDict , indexList);
+# excelTools.printSumaryList();
 excelTools.xlsWriterTools.closeWriter();

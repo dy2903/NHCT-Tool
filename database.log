@@ -18,3 +18,26 @@
 2017-07-05 08:04:31,575 ERROR excelTools.openExcel Line:84 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_4.xls'
 2017-07-05 09:49:27,371 ERROR excelTools.openExcel Line:84 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_2.xls'
 2017-07-05 14:30:54,926 ERROR excelTools.openExcel Line:85 Can't Open the excel, [Errno 13] Permission denied: '.\\~$前海人寿机构机房设备框架采购_含标准价_1.xls'
+2017-07-06 07:36:07,637 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:36:26,654 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:40:00,289 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:40:48,139 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:41:28,844 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:42:28,536 ERROR excelTools.getColumnIndexDict Line:321 titleTags比columnTags长:list index out of range
+2017-07-06 07:48:21,915 ERROR excelTools.openExcel Line:86 Can't Open the excel, [Errno 13] Permission denied: '.\\~$招银云创服务器零散采购_含标准价_1.xls'
+2017-07-06 07:48:45,048 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 07:49:22,818 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 07:49:41,071 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 07:54:35,234 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 07:56:48,428 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 08:03:55,779 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 08:04:50,489 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 08:06:57,699 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:14:36,116 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:38:44,824 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:40:47,332 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:41:14,554 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:42:13,797 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:43:53,575 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:44:00,148 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-06 21:46:11,653 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range

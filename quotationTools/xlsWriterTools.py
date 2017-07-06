@@ -26,7 +26,7 @@ class xlsWriterTools:
     # 获得excel表格的列和headerTag的关联
     def getColumnIndexDict(self , indexList):
         columnIndexDict = {};
-        columnTags = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'];
+        columnTags = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         for i in range(len(indexList)):
                 columnIndexDict[indexList[i]] = columnTags[i];
 
