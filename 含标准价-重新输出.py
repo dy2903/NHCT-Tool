@@ -101,7 +101,7 @@ excelTools.replaceTopRow();
 excelTools.removeID();
 # 打印明细sheet
 if MODEL == 'HPE':
-    hideColumn = ['productLine','waston','typeID']
+    hideColumn = ['productLine','waston','typeID','totalNum']
 else:
     hideColumn = ['productLine','waston'];
 

@@ -73,11 +73,17 @@ else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
     outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']  
+    suffix = '招商银行'
     
 if dbName == 'merchants':
     outputKeys = ['ID','H3C','BOM','Category','switch','typeID','description','totalNum','unit','price','totalPrice','taxCategory','taxRate','addOn','period','repairFree','maintenancePeriod','serialNum', 'productLine','waston'];
-    # outputKeys = ['ID','H3C','BOM','Category','switch','typeID','description','totalNum','unit','listprice','totalListPrice','taxCategory','taxRate','addOn','period','repairFree','maintenancePeriod','serialNum', 'productLine','waston'];
     outputHeaderLine = ['序号','品牌','招银采购管理系统产品编码','产品分类','产品及服务名称','型号','详细描述（规格/技术参数）','数量','单位','单价','小计','纳税类别','税率','备注','到货周期（单位：工作日）','新购产品免费维护期（单位：月）','维护周期','维护产品序列号', '产线','WATSON_LINE_ITEM_ID']  
+    suffix = '招商银行'
+elif dbName == 'pingan' :
+    outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    suffix = '平安';  
+    
     
 
 newSuffix = suffix + '_'+ str(numSuffix + 1);
@@ -123,14 +129,16 @@ excelTools.sumaryList = excelTools.getSumaryList();
 
 if dbName != 'merchants':
     excelTools.replaceTotalNum();
+    
 # 打印汇总页
 if MODEL == 'H3C':
     [bomDict , indexList]= excelTools.getCheckList('typeID');
 else:
     [bomDict , indexList]= excelTools.getCheckList();
 
-if dbName != 'merchants':
+if dbName == 'normal':
     excelTools.printCheckList(bomDict , indexList);
+if dbName != 'pingan'    :
+    excelTools.printSumaryList();
     
-excelTools.printSumaryList();
 excelTools.xlsWriterTools.closeWriter();

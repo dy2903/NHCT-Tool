@@ -41,3 +41,6 @@
 2017-07-06 21:43:53,575 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
 2017-07-06 21:44:00,148 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
 2017-07-06 21:46:11,653 ERROR excelTools.getColumnIndexDict Line:322 titleTags比columnTags长:list index out of range
+2017-07-07 10:08:04,150 ERROR excelTools.openExcel Line:88 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_1.xls'
+2017-07-07 10:16:48,135 ERROR excelTools.openExcel Line:88 Can't Open the excel, [Errno 13] Permission denied: '.\\~$中国太平保险集团公司武汉数据中心网络设备采购项目_含标准价_1.xls'
+2017-07-11 10:09:06,942 ERROR excelTools.openExcel Line:90 Can't Open the excel, [Errno 13] Permission denied: '.\\~$【深证通】H3C配置清单-2017-7-3_含标准价_1.xls'

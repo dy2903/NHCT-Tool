@@ -1,4 +1,5 @@
-#encoding:utf-8
+#/usr/bin/env python3
+# -*-coding:UTF-8-*-
 import logging.config
 from logging.handlers import RotatingFileHandler
 import configparser

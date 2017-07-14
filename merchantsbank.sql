@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2017 at 01:09 PM
+-- Generation Time: Jul 10, 2017 at 01:43 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `listpricetable`
+-- Table structure for table `merchantsbank`
 --
 
 CREATE TABLE IF NOT EXISTS `merchantsbank` (
@@ -31,12 +31,12 @@ CREATE TABLE IF NOT EXISTS `merchantsbank` (
   `BOM` varchar(40) DEFAULT NULL,
   `typeID` varchar(40) DEFAULT NULL,
   `discription` varchar(255) DEFAULT NULL,
-  `listprice` int(10) DEFAULT NULL,
+  `listprice` decimal(10,3) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9748 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20308 ;
 
 --
--- Dumping data for table `listpricetable`
+-- Dumping data for table `merchantsbank`
 --
 
 INSERT INTO `merchantsbank` ( `BOM`, `typeID`, `discription`, `listprice`) VALUES
@@ -1145,7 +1145,7 @@ INSERT INTO `merchantsbank` ( `BOM`, `typeID`, `discription`, `listprice`) VALUE
 ('10201021099','LIS-VCF-MAN1','H3C VCF Controller软件License费用-管理25个节点','37050'),
 ('10201021100','LIS-VCF-Overlay','H3C VCF Controller软件Overlay功能License费用','37050'),
 ('10201021101','SDN-M5-1','组合产品-H3C VCF控制器软件+1020V+2个基础包(25个节点)+1个Overlay License费用+1个VNF Manager标准版-(0231A2YD*1+0231A3S5*1+3130A1H7*2+3130A1L5*1+3130A1SM*1)-国内海外合一版','148200'),
-('10201021102','SDN-M6-3','H3C VCFC软件授权（高级版）组合产品-H3C VCFC软件+1020V+2个基础包（25个节点）+2个HA Lic+1个Overlay Lic+1个VNF Manage Lic（标准版）+1个Service-Chain APP Lic-(0231A2YD*1+3130A1H7*2+3130A1H9*2+3130A1L5*1+3130A1SM*1+3130A1T7*1)-国内海外合一版','185250'),
+('10201021102','SDN-M6-3','H3C VCFC软件授权（高级版）合产品-H3C VCFC软件+1020V+2个基础包（25个节点）+2个HA Lic+1个Overlay Lic+1个VNF Manage Lic（标准版）+1个Service-Chain APP Lic-(0231A2YD*1+3130A1H7*2+3130A1H9*2+3130A1L5*1+3130A1SM*1+3130A1T7*1)-国内海外合一版','185250'),
 ('10201021103','SDN-M2-1','组合产品-1个硬件Overlay网元费用(5个网元)+1个Openflow节点费用(25个节点)-(3130A1T6*1+3130A1H8*1)-国内海外合一版','66690'),
 ('10201021104','LIS-VCF-OverlayHD-1','H3C VCF控制器软件License费用-管理1个overlay硬件网元','18525'),
 ('10201021105','SDN-M2-2','组合产品-1个S1020V主机物理CPU费用(32个物理CPU)+2个Openflow节点费用(25个节点)-(3130A1SL*1+3130A1H8*2)-国内海外合一版','46312.5'),
@@ -3561,7 +3561,3 @@ INSERT INTO `merchantsbank` ( `BOM`, `typeID`, `discription`, `listprice`) VALUE
 ('10201023514','SV-4A-LIS-vLB1000-C1','H3C SecPath vLB1000授权函(Comware V7,1vCPU,永久授权) （一年 7*24*4维保服务）','4701.66'),
 ('10201023515','SV-4A-LIS-vLB1000-C4','H3C SecPath vLB1000授权函(Comware V7,4vCPU,永久授权) （一年 7*24*4维保服务）','12373.64'),
 ('10201023516','SV-4A-LIS-vLB1000-C8','H3C SecPath vLB1000授权函(Comware V7,8vCPU,永久授权) （一年 7*24*4维保服务）','15466.68');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -64,9 +64,11 @@ class excelTools:
         # Sumary sheet 的标题
         self.sumaryValues = ['序号','描述','配置主机','数量','单价','总价','占比'];
         # 数据库的列标题
-        self.dbKeys = ['ID', 'BOM', 'typeID', 'description', 'listprice'];
-        if dbName == 'merchants':
+        if dbName == 'merchants' or dbName == 'pingan':
             self.dbKeys= ['ID', 'BOM', 'typeID', 'description', 'price'];
+        else:       
+            self.dbKeys = ['ID', 'BOM', 'typeID', 'description', 'listprice'];
+            
         
         
     # 获得差集
@@ -298,11 +300,6 @@ class excelTools:
         self.amountFormular(len(self.excelList)-1, 'totalPrice');
         if 'totalListPrice' in self.outKeys:
             self.amountFormular(len(self.excelList) - 1, 'totalListPrice');
-            # index = len(self.excelList) - 1;
-            # tag = 'totalListPrice'
-            # amountIndex = len(self.excelList) - 1;
-            # self.excelList[index][tag] = '=SUMPRODUCT((' + self.columnIndexDict[tag] + '2:' +self.columnIndexDict[tag] + str(amountIndex) + ')/2';
-            # =SUMPRODUCT((E2:E24<>"")*(K2:K24))
     # 加所有的公式
     def addFormula (self):
         sectionNum = [1] * len(self.headerIndex);    
@@ -374,7 +371,7 @@ class excelTools:
             if row['colorTag'] == 'common':
                 row['BOM'] = '';    
                 
-    # 去掉BOM编码    
+    # 去掉ID编码    
     def removeID(self):
         if 'ID' not in self.inputKeys:
             # print("没有BOM列");
@@ -473,6 +470,7 @@ class excelTools:
         for i in range( len(self.excelList)):
             dict = {};
             # 依次取出每一行
+
             row = self.excelList[i];
 
             if dbName == 'merchants':    
@@ -486,12 +484,15 @@ class excelTools:
                 else :
                     print('BOM 和产品型号都为空');
             else:
-                dbTable == 'pingan'
+                dbTable = 'pingan'
                     
             # dbTable = 'listpricetable'
             # sql = "SELECT *  from listpricetable where " + tag + "=%s";
             sql = "SELECT *  from "+ dbTable+" where " + tag + "=%s";
-            values = self.db.fetch_all(sql , row[tag]);
+            if self.excelList[i]['colorTag'] == 'common':
+                values = self.db.fetch_all(sql , row[tag]);
+            else:
+                values = [];
             # print (values);
             # 如果查出来的结果为空，则保留原样
             if values == []:

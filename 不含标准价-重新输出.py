@@ -56,29 +56,25 @@ suffix = '含标准价'
 
 if fileTag.isdigit() and  MODEL == 'H3C' :
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston','addOn'];
-    # outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
     outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
-    suffix = '含标准价'
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','单套配置',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    suffix = '不含标准价'
 elif fileTag == suffix and MODEL == 'H3C':
-    inputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
-    # outputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
+    # inputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
+    inputKeys = ['ID','BOM','typeID','description','num','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston','addOn'];
     outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','单套配置',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    suffix = '不含标准价'
 elif fileTag.isdigit() and MODEL == 'HPE':
     inputKeys = ['ID','BOM','typeID','description','num','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
     outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','单套配置',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    suffix = '不含标准价'
 else:
     inputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputKeys = ['ID','num','BOM','typeID','description','totalNum','listprice','off','price','totalPrice','totalListPrice','productLine','waston', 'addOn'];
-    # outputHeaderLine = ['序号','单套数量','产品编码','产品型号','项目名称',	'总数量','目录价','折扣','单价'	,'总价','总目录价','产线','WATSON_LINE_ITEM_ID','备注']
     outputKeys = ['ID','BOM','typeID','description','num','totalNum','price','totalPrice','productLine','waston', 'addOn'];
-    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','数量',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    outputHeaderLine = ['序号','产品编码','产品型号','项目名称','单套配置',	'总数量','单价'	,'总价','产线','WATSON_LINE_ITEM_ID','备注']
+    suffix = '不含标准价'
 
 newSuffix = suffix + '_'+ str(numSuffix + 1);
 
@@ -90,8 +86,7 @@ excelTools.addTagColumn();
 # excelTools.removeOtherLines();
 excelTools.getSubTotalIndex();
 # 替换光模块
-# excelTools.replaceSFP();
-
+excelTools.replaceSFP();
 # 从数据库里面获取信息
 # listDB = excelTools.getValueByDB();
 # excelTools.replaceByList (listDB,excelTools.dbKeys);
@@ -103,7 +98,7 @@ if 'off' in outputKeys:
 # 标题用outputValues替换
 excelTools.replaceTopRow();
 # 删除BOM编码
-# excelTools.removeBOM();
+excelTools.removeBOM();
 # 删除ID
 excelTools.removeID();
 # 打印明细sheet
@@ -114,9 +109,9 @@ else:
 
 excelTools.printList(excelTools.excelList , excelTools.sheetName , hideColumn);
 # 打印sumary
-excelTools.sumaryList = excelTools.getSumaryList();
+# excelTools.sumaryList = excelTools.getSumaryList();
 
-excelTools.replaceTotalNum();
+# excelTools.replaceTotalNum();
 # 打印汇总页
 # if MODEL == 'H3C':
 #     [bomDict , indexList]= excelTools.getCheckList('typeID');
